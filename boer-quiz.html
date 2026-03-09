@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ben jij trots op de boer?</title>
+</head>
+
+<body>
+
+<h1>Ben jij trots op de boer? 🌾</h1>
+
+<form id="quiz">
+
+<p>1. Waar komt melk vandaan?</p>
+<input type="radio" name="q1" value="a"> De supermarkt<br>
+<input type="radio" name="q1" value="b"> De koe<br>
+
+<p>2. Wie zorgt voor het eten dat op je bord ligt?</p>
+<input type="radio" name="q2" value="a"> De boer<br>
+<input type="radio" name="q2" value="b"> Niemand<br>
+
+<p>3. Is het werk van een boer belangrijk?</p>
+<input type="radio" name="q3" value="a"> Ja<br>
+<input type="radio" name="q3" value="b"> Nee<br><br>
+
+<button type="button" onclick="berekenScore()">Bekijk score</button>
+
+</form>
+
+<h2 id="resultaat"></h2>
+
+<script>
+function berekenScore() {
+
+let goed = 0;
+
+if (document.querySelector('input[name="q1"]:checked')?.value === "b") {
+goed++;
+}
+
+if (document.querySelector('input[name="q2"]:checked')?.value === "a") {
+goed++;
+}
+
+if (document.querySelector('input[name="q3"]:checked')?.value === "a") {
+goed++;
+}
+
+let totaal = 3;
+let percentage = (goed / totaal) * 100;
+
+let tekst = "Je score: " + percentage + "%<br>";
+
+if (percentage >= 70) {
+tekst += "Je bent trots op de boer! 🌾";
+} else {
+tekst += "Je weet nog niet zoveel over boeren.";
+}
+
+document.getElementById("resultaat").innerHTML = tekst;
+
+}
+</script>
+
+</body>
+</html>
